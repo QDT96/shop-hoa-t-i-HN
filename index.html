@@ -25,11 +25,7 @@
             </a>
             <nav class="flex items-center gap-6 font-medium">
                 <a href="index.html" class="text-rose-500 font-semibold">Trang Chủ</a>
-                <!-- Nút bấm trên Menu -->
-                <a href="san-pham.html" class="bg-rose-500 hover:bg-rose-600 text-white text-sm px-4 py-2 rounded-full transition flex items-center gap-2 shadow-sm">
-                    <span>Xem Tất Cả Mẫu Hoa</span>
-                    <i class="fa-solid fa-arrow-right text-xs"></i>
-                </a>
+                <a href="san-pham.html" class="hover:text-rose-500 transition">Tất Cả Sản Phẩm</a>
             </nav>
         </div>
     </header>
@@ -43,7 +39,7 @@
         </div>
     </section>
 
-    <!-- Notification Toast (Thông báo khi copy thành công) -->
+    <!-- Notification Toast -->
     <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white px-5 py-3 rounded-lg shadow-xl translate-y-20 opacity-0 transition-all duration-300 z-50 flex items-center gap-3">
         <i class="fa-solid fa-circle-check text-emerald-400 text-xl"></i>
         <div>
@@ -52,7 +48,7 @@
         </div>
     </div>
 
-    <!-- Main Section (Danh Sách Hoa Ban Đầu) -->
+    <!-- Main Content -->
     <main class="max-w-6xl mx-auto px-4 py-12 flex-1 w-full">
         <!-- Search & Filter -->
         <div class="flex flex-col sm:flex-row gap-4 justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-rose-100 mb-8">
@@ -68,9 +64,9 @@
             </div>
         </div>
 
-        <!-- Product Grid -->
+        <!-- Product Grid Ban Đầu -->
         <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <!-- Item 1 -->
+            <!-- HOA-001 -->
             <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-rose-100 flex flex-col" data-category="sinh-nhat">
                 <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=500&q=80" class="w-full h-56 object-cover">
                 <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
@@ -88,7 +84,7 @@
                 </div>
             </div>
 
-            <!-- Item 2 -->
+            <!-- HOA-002 -->
             <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-rose-100 flex flex-col" data-category="sinh-nhat">
                 <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=500&q=80" class="w-full h-56 object-cover">
                 <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
@@ -106,7 +102,7 @@
                 </div>
             </div>
 
-            <!-- Item 3 -->
+            <!-- HOA-003 -->
             <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-rose-100 flex flex-col" data-category="sinh-nhat">
                 <img src="https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?w=500&q=80" class="w-full h-56 object-cover">
                 <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
@@ -124,7 +120,7 @@
                 </div>
             </div>
 
-            <!-- Item 4 -->
+            <!-- HOA-004 -->
             <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-rose-100 flex flex-col" data-category="hoa-cuoi">
                 <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=500&q=80" class="w-full h-56 object-cover">
                 <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
@@ -143,21 +139,20 @@
             </div>
         </div>
 
-        <!-- 👇 NÚT BẤM CHUYỂN SANG TRANG MẪU HOA KHÁC 👇 -->
-        <div class="text-center mt-12 mb-6">
+        <!-- 🌟 NÚT BẤM CHUYỂN TRANG MỚI ĐƯỢC THÊM VÀO ĐÂY 🌟 -->
+        <div class="text-center mt-12 mb-4">
             <a href="san-pham.html" class="inline-flex items-center justify-center gap-3 bg-rose-500 hover:bg-rose-600 text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg shadow-rose-200 transition-all hover:scale-105">
-                <span>Khám phá thêm nhiều mẫu hoa khác</span>
+                <span>Xem tất cả các mẫu hoa</span>
                 <i class="fa-solid fa-arrow-right"></i>
             </a>
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer Ban Đầu -->
     <footer class="bg-white border-t border-rose-100 py-8 text-center text-slate-500 text-sm">
         <div class="max-w-6xl mx-auto px-4 space-y-4">
             <p>© 2026 Bloom Elegance Shop. Tất cả quyền được bảo lưu.</p>
             
-            <!-- Ô Cấu Hình Link FB Shop -->
             <div class="inline-flex items-center gap-2 bg-rose-50 px-4 py-2 rounded-lg border border-rose-200">
                 <i class="fa-brands fa-facebook text-blue-600"></i>
                 <span class="text-xs font-medium">Link FB Shop:</span>
