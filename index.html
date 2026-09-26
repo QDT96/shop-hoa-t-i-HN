@@ -8,164 +8,235 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .font-serif-title { font-family: 'Playfair Display', serif; }
     </style>
 </head>
-<body class="bg-rose-50/30 text-slate-700 min-h-screen flex flex-col justify-between">
+<body class="bg-[#FFFDF9] text-slate-700 min-h-screen flex flex-col justify-between">
 
-    <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-rose-100 shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2">
-                <i class="fa-solid font-bold text-2xl text-rose-500 fa-spa"></i>
-                <span class="font-serif-title font-bold text-2xl tracking-wide text-slate-800">Bloom <span class="text-rose-500">Elegance</span></span>
+    <!-- Header / Navigation -->
+    <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-rose-100/60 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-rose-100 flex items-center justify-center text-rose-500">
+                    <i class="fa-solid fa-spa text-lg"></i>
+                </div>
+                <div>
+                    <span class="font-serif-title font-bold text-xl tracking-wide text-slate-800">Bloom Elegance</span>
+                    <p class="text-[10px] tracking-wider text-rose-400 font-semibold uppercase -mt-1">Hoa Tươi & Quà Tặng</p>
+                </div>
             </a>
-            <nav class="flex items-center gap-6 font-medium">
+
+            <!-- Menu Navigation -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-600">
                 <a href="index.html" class="text-rose-500 font-semibold">Trang Chủ</a>
-                <a href="san-pham.html" class="hover:text-rose-500 transition">Tất Cả Sản Phẩm</a>
+                <a href="san-pham.html" class="hover:text-rose-500 transition">Bộ Sưu Tập</a>
+                <a href="#about" class="hover:text-rose-500 transition">Về Chúng Tôi</a>
+                <a href="#contact" class="hover:text-rose-500 transition">Liên Hệ</a>
             </nav>
+
+            <!-- Call to Action Button -->
+            <a href="https://facebook.com" id="fb-header-btn" target="_blank" class="bg-[#2563EB] hover:bg-blue-700 text-white font-medium text-sm px-5 py-2.5 rounded-full shadow-sm transition flex items-center gap-2">
+                <i class="fa-brands fa-facebook"></i>
+                <span>Ghé thăm Facebook</span>
+            </a>
         </div>
     </header>
 
-    <!-- Hero Banner -->
-    <section class="relative bg-rose-100/50 py-16 px-4">
-        <div class="max-w-4xl mx-auto text-center space-y-4">
-            <span class="text-rose-500 font-semibold tracking-wider text-sm uppercase">Shop Hoa Tươi Cao Cấp</span>
-            <h1 class="font-serif-title text-4xl md:text-5xl text-slate-800 font-bold leading-tight">Trao Gửi Yêu Thương Qua Từng Nhành Hoa</h1>
-            <p class="text-slate-600 max-w-xl mx-auto">Chuyên cung cấp các mẫu hoa tươi nghệ thuật, hiện đại. Chọn mẫu hoa yêu thích và liên hệ đặt hàng dễ dàng qua Facebook!</p>
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-b from-rose-50/50 via-[#FFFDF9] to-[#FFFDF9] py-16 px-4">
+        <div class="max-w-3xl mx-auto text-center space-y-6">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 bg-rose-50 border border-rose-200/60 px-4 py-1.5 rounded-full">
+                <i class="fa-solid fa-heart text-rose-400 text-xs"></i>
+                <span class="text-rose-500 font-semibold tracking-wider text-xs uppercase">Hoa tươi tuyển chọn trong ngày</span>
+            </div>
+
+            <!-- Main Heading -->
+            <h1 class="font-serif-title text-4xl sm:text-5xl text-slate-800 font-bold leading-tight">
+                Gửi Trọn Tình Cảm Vừa Chớm Nở Qua <br/>
+                <span class="italic text-rose-400 font-normal">Từng Cánh Hoa</span>
+            </h1>
+
+            <!-- Description -->
+            <p class="text-slate-500 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
+                Mang lại cảm xúc tinh tế cho những dịp đặc biệt. Lựa chọn mẫu hoa yêu thích và nhắn tin mã cho shop qua Facebook để nhận tư vấn thiết kế nhanh nhất.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap justify-center items-center gap-4 pt-2">
+                <a href="#featured-products" class="bg-slate-900 hover:bg-slate-800 text-white font-medium text-sm px-6 py-3 rounded-full shadow-md transition flex items-center gap-2">
+                    <span>Khám phá bộ sưu tập</span>
+                    <i class="fa-solid fa-arrow-down text-xs"></i>
+                </a>
+                <button onclick="toggleConfigModal()" class="bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-medium text-sm px-5 py-3 rounded-full transition flex items-center gap-2">
+                    <i class="fa-solid fa-gear text-slate-400"></i>
+                    <span>Cấu hình Link Shop</span>
+                </button>
+            </div>
+
+            <!-- Sub Features -->
+            <div class="grid grid-cols-3 gap-4 pt-10 border-t border-rose-100/60 max-w-xl mx-auto">
+                <div class="text-center">
+                    <div class="font-serif-title text-xl font-bold text-slate-800">100%</div>
+                    <div class="text-xs text-slate-400">Hoa Tươi Tự Nhiên</div>
+                </div>
+                <div class="text-center">
+                    <div class="font-serif-title text-xl font-bold text-slate-800">Fast</div>
+                    <div class="text-xs text-slate-400">Giao Nhanh 2h Nội Thành</div>
+                </div>
+                <div class="text-center">
+                    <div class="font-serif-title text-xl font-bold text-slate-800">Custom</div>
+                    <div class="text-xs text-slate-400">Thêu Thiệp Theo Yêu Cầu</div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Notification Toast -->
-    <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white px-5 py-3 rounded-lg shadow-xl translate-y-20 opacity-0 transition-all duration-300 z-50 flex items-center gap-3">
+    <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-2xl translate-y-20 opacity-0 transition-all duration-300 z-50 flex items-center gap-3">
         <i class="fa-solid fa-circle-check text-emerald-400 text-xl"></i>
         <div>
             <p class="font-medium text-sm">Đã sao chép mã hoa <span id="toast-code" class="text-amber-300 font-bold"></span>!</p>
-            <p class="text-xs text-slate-300">Đang chuyển tới Facebook Shop...</p>
+            <p class="text-xs text-slate-300">Đang chuyển tới Messenger/Facebook...</p>
         </div>
     </div>
 
-    <!-- Main Content -->
-    <main class="max-w-6xl mx-auto px-4 py-12 flex-1 w-full">
-        <!-- Search & Filter -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-rose-100 mb-8">
-            <div class="relative w-full sm:w-72">
-                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                <input type="text" id="search-input" onkeyup="filterProducts()" placeholder="Tìm theo tên hoặc mã hoa..." class="w-full pl-9 pr-4 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-rose-400">
-            </div>
-            <div class="flex flex-wrap gap-2 w-full sm:w-auto">
-                <button onclick="filterCategory('all')" class="cat-btn active bg-rose-500 text-white px-3 py-1.5 rounded-lg text-xs font-semibold">Tất cả</button>
-                <button onclick="filterCategory('sinh-nhat')" class="cat-btn bg-slate-100 text-slate-600 hover:bg-rose-100 px-3 py-1.5 rounded-lg text-xs font-semibold">Hoa Sinh Nhật</button>
-                <button onclick="filterCategory('khai-truong')" class="cat-btn bg-slate-100 text-slate-600 hover:bg-rose-100 px-3 py-1.5 rounded-lg text-xs font-semibold">Khai Trương</button>
-                <button onclick="filterCategory('hoa-cuoi')" class="cat-btn bg-slate-100 text-slate-600 hover:bg-rose-100 px-3 py-1.5 rounded-lg text-xs font-semibold">Hoa Cưới</button>
-            </div>
+    <!-- Featured Products Section -->
+    <main id="featured-products" class="max-w-6xl mx-auto px-4 py-8 flex-1 w-full">
+        <div class="text-center mb-8">
+            <h2 class="font-serif-title text-2xl md:text-3xl font-bold text-slate-800">Mẫu Hoa Tươi Nổi Bật</h2>
+            <p class="text-xs text-slate-400 mt-1">Các thiết kế hoa được yêu thích nhất trong tuần</p>
         </div>
 
-        <!-- Product Grid Ban Đầu -->
-        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <!-- HOA-001 -->
-            <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-rose-100 flex flex-col" data-category="sinh-nhat">
-                <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=500&q=80" class="w-full h-56 object-cover">
+        <!-- Product Grid (Trang chủ chỉ hiển thị các mẫu nổi bật) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Product 1 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-rose-100/60 flex flex-col">
+                <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=500&q=80" alt="Hoa Hồng Đỏ" class="w-full h-56 object-cover">
                 <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
                     <div>
-                        <span class="bg-rose-50 text-rose-600 text-xs font-semibold px-2 py-1 rounded">HOA-001</span>
-                        <h3 class="font-bold text-slate-800 mt-2">Bó Hoa Hồng Đỏ Nhập Khẩu</h3>
-                        <p class="text-xs text-slate-500 mt-1">Sự kết hợp giữa hồng đỏ quyến rũ và baby trắng.</p>
+                        <span class="bg-rose-50 text-rose-500 text-[11px] font-semibold px-2 py-0.5 rounded">HOA-001</span>
+                        <h3 class="font-bold text-slate-800 text-sm mt-2">Bó Hoa Hồng Đỏ Nhập Khẩu</h3>
+                        <p class="text-xs text-slate-400 mt-1 line-clamp-2">Sự kết hợp giữa hồng đỏ quyến rũ và baby trắng tinh khôi.</p>
                     </div>
                     <div>
-                        <div class="text-rose-500 font-bold text-lg mb-3">450.000 VNĐ</div>
-                        <button onclick="orderFlower('HOA-001')" class="w-full bg-slate-800 hover:bg-rose-500 text-white text-sm font-medium py-2 rounded-xl transition flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-facebook-messenger"></i> Đặt qua Mã FB
+                        <div class="text-rose-500 font-bold text-base mb-3">450.000 VNĐ</div>
+                        <button onclick="orderFlower('HOA-001')" class="w-full bg-slate-900 hover:bg-rose-500 text-white text-xs font-medium py-2.5 rounded-xl transition flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-facebook-messenger"></i> Đặt qua Facebook
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- HOA-002 -->
-            <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-rose-100 flex flex-col" data-category="sinh-nhat">
-                <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=500&q=80" class="w-full h-56 object-cover">
+            <!-- Product 2 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-rose-100/60 flex flex-col">
+                <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=500&q=80" alt="Hoa Tone Pastel" class="w-full h-56 object-cover">
                 <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
                     <div>
-                        <span class="bg-rose-50 text-rose-600 text-xs font-semibold px-2 py-1 rounded">HOA-002</span>
-                        <h3 class="font-bold text-slate-800 mt-2">Bó Hoa Tone Pastel Nhẹ Nhàng</h3>
-                        <p class="text-xs text-slate-500 mt-1">Tone màu kem hồng ngọt ngào dành tặng người thân.</p>
+                        <span class="bg-rose-50 text-rose-500 text-[11px] font-semibold px-2 py-0.5 rounded">HOA-002</span>
+                        <h3 class="font-bold text-slate-800 text-sm mt-2">Bó Hoa Tone Pastel</h3>
+                        <p class="text-xs text-slate-400 mt-1 line-clamp-2">Tone màu kem hồng ngọt ngào thích hợp tặng người thân, người yêu.</p>
                     </div>
                     <div>
-                        <div class="text-rose-500 font-bold text-lg mb-3">520.000 VNĐ</div>
-                        <button onclick="orderFlower('HOA-002')" class="w-full bg-slate-800 hover:bg-rose-500 text-white text-sm font-medium py-2 rounded-xl transition flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-facebook-messenger"></i> Đặt qua Mã FB
+                        <div class="text-rose-500 font-bold text-base mb-3">520.000 VNĐ</div>
+                        <button onclick="orderFlower('HOA-002')" class="w-full bg-slate-900 hover:bg-rose-500 text-white text-xs font-medium py-2.5 rounded-xl transition flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-facebook-messenger"></i> Đặt qua Facebook
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- HOA-003 -->
-            <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-rose-100 flex flex-col" data-category="sinh-nhat">
-                <img src="https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?w=500&q=80" class="w-full h-56 object-cover">
+            <!-- Product 3 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-rose-100/60 flex flex-col">
+                <img src="https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?w=500&q=80" alt="Hoa Hướng Dương" class="w-full h-56 object-cover">
                 <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
                     <div>
-                        <span class="bg-rose-50 text-rose-600 text-xs font-semibold px-2 py-1 rounded">HOA-003</span>
-                        <h3 class="font-bold text-slate-800 mt-2">Bó Hướng Dương Tốt Nghiệp</h3>
-                        <p class="text-xs text-slate-500 mt-1">Tượng trưng cho sự thành công, may mắn.</p>
+                        <span class="bg-rose-50 text-rose-500 text-[11px] font-semibold px-2 py-0.5 rounded">HOA-003</span>
+                        <h3 class="font-bold text-slate-800 text-sm mt-2">Bó Hướng Dương Rực Rỡ</h3>
+                        <p class="text-xs text-slate-400 mt-1 line-clamp-2">Tượng trưng cho sự may mắn, năng lượng tích cực và thành công.</p>
                     </div>
                     <div>
-                        <div class="text-rose-500 font-bold text-lg mb-3">380.000 VNĐ</div>
-                        <button onclick="orderFlower('HOA-003')" class="w-full bg-slate-800 hover:bg-rose-500 text-white text-sm font-medium py-2 rounded-xl transition flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-facebook-messenger"></i> Đặt qua Mã FB
+                        <div class="text-rose-500 font-bold text-base mb-3">380.000 VNĐ</div>
+                        <button onclick="orderFlower('HOA-003')" class="w-full bg-slate-900 hover:bg-rose-500 text-white text-xs font-medium py-2.5 rounded-xl transition flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-facebook-messenger"></i> Đặt qua Facebook
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- HOA-004 -->
-            <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-rose-100 flex flex-col" data-category="hoa-cuoi">
-                <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=500&q=80" class="w-full h-56 object-cover">
+            <!-- Product 4 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-rose-100/60 flex flex-col">
+                <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=500&q=80" alt="Hoa Tulip" class="w-full h-56 object-cover">
                 <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
                     <div>
-                        <span class="bg-rose-50 text-rose-600 text-xs font-semibold px-2 py-1 rounded">HOA-004</span>
-                        <h3 class="font-bold text-slate-800 mt-2">Bó Tulip Hà Lan Trắng</h3>
-                        <p class="text-xs text-slate-500 mt-1">Hoa Tulip nhập khẩu sang trọng, tinh tế.</p>
+                        <span class="bg-rose-50 text-rose-500 text-[11px] font-semibold px-2 py-0.5 rounded">HOA-004</span>
+                        <h3 class="font-bold text-slate-800 text-sm mt-2">Bó Tulip Hà Lan Trắng</h3>
+                        <p class="text-xs text-slate-400 mt-1 line-clamp-2">Mẫu tulip trắng tinh khôi nhập khẩu cao cấp.</p>
                     </div>
                     <div>
-                        <div class="text-rose-500 font-bold text-lg mb-3">680.000 VNĐ</div>
-                        <button onclick="orderFlower('HOA-004')" class="w-full bg-slate-800 hover:bg-rose-500 text-white text-sm font-medium py-2 rounded-xl transition flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-facebook-messenger"></i> Đặt qua Mã FB
+                        <div class="text-rose-500 font-bold text-base mb-3">680.000 VNĐ</div>
+                        <button onclick="orderFlower('HOA-004')" class="w-full bg-slate-900 hover:bg-rose-500 text-white text-xs font-medium py-2.5 rounded-xl transition flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-facebook-messenger"></i> Đặt qua Facebook
                         </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 🌟 NÚT BẤM CHUYỂN TRANG MỚI ĐƯỢC THÊM VÀO ĐÂY 🌟 -->
-        <div class="text-center mt-12 mb-4">
-            <a href="san-pham.html" class="inline-flex items-center justify-center gap-3 bg-rose-500 hover:bg-rose-600 text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg shadow-rose-200 transition-all hover:scale-105">
-                <span>Xem tất cả các mẫu hoa</span>
-                <i class="fa-solid fa-arrow-right"></i>
+        <!-- 🌟 ĐƯỜNG DẪN / NÚT CHUYỂN SANG TRANG XEM TẤT CẢ MẪU HOA 🌟 -->
+        <div class="mt-12 text-center">
+            <a href="san-pham.html" class="inline-flex items-center gap-3 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-medium text-sm px-8 py-3.5 rounded-full shadow-lg shadow-rose-200 transition-all hover:scale-105">
+                <span>Xem tất cả mẫu hoa (Bộ sưu tập đầy đủ)</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
             </a>
         </div>
     </main>
 
-    <!-- Footer Ban Đầu -->
-    <footer class="bg-white border-t border-rose-100 py-8 text-center text-slate-500 text-sm">
-        <div class="max-w-6xl mx-auto px-4 space-y-4">
-            <p>© 2026 Bloom Elegance Shop. Tất cả quyền được bảo lưu.</p>
-            
-            <div class="inline-flex items-center gap-2 bg-rose-50 px-4 py-2 rounded-lg border border-rose-200">
-                <i class="fa-brands fa-facebook text-blue-600"></i>
-                <span class="text-xs font-medium">Link FB Shop:</span>
-                <input type="text" id="fb-link-input" value="https://facebook.com" class="text-xs border rounded px-2 py-1 w-52 bg-white text-slate-700 focus:outline-none border-rose-300">
+    <!-- Modal Cấu hình Link Shop -->
+    <div id="config-modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-2xl p-6 max-w-md w-full mx-4 shadow-xl space-y-4">
+            <h3 class="font-serif-title font-bold text-lg text-slate-800">Cấu hình liên kết Facebook</h3>
+            <p class="text-xs text-slate-500">Nhập đường dẫn trang Facebook hoặc Messenger của bạn để nút đặt hàng tự động chuyển tới.</p>
+            <input type="text" id="shop-url-input" value="https://facebook.com" class="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-rose-400">
+            <div class="flex justify-end gap-2">
+                <button onclick="toggleConfigModal()" class="px-4 py-2 text-xs font-medium text-slate-600 hover:bg-slate-100 rounded-lg">Hủy</button>
+                <button onclick="saveConfig()" class="px-4 py-2 text-xs font-medium bg-rose-500 text-white rounded-lg hover:bg-rose-600">Lưu lại</button>
             </div>
         </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-rose-100/60 py-6 text-center text-xs text-slate-400">
+        <p>© 2026 Bloom Elegance Shop. Tất cả quyền được bảo lưu.</p>
     </footer>
 
+    <!-- JavaScript -->
     <script>
-        function orderFlower(code) {
-            const message = `Chào shop, mình muốn tư vấn và đặt bó hoa có mã là: ${code}`;
-            const fbLink = document.getElementById('fb-link-input').value.trim() || "https://facebook.com";
+        let shopFBLink = localStorage.getItem('shop_fb_url') || 'https://facebook.com';
 
+        function toggleConfigModal() {
+            const modal = document.getElementById('config-modal');
+            document.getElementById('shop-url-input').value = shopFBLink;
+            modal.classList.toggle('hidden');
+        }
+
+        function saveConfig() {
+            const inputVal = document.getElementById('shop-url-input').value.trim();
+            if (inputVal) {
+                shopFBLink = inputVal;
+                localStorage.setItem('shop_fb_url', shopFBLink);
+                document.getElementById('fb-header-btn').href = shopFBLink;
+            }
+            toggleConfigModal();
+        }
+
+        function orderFlower(code) {
+            const message = `Chào shop, mình muốn tư vấn mẫu hoa có mã: ${code}`;
             navigator.clipboard.writeText(message).then(() => {
                 const toast = document.getElementById('toast');
                 document.getElementById('toast-code').innerText = code;
@@ -173,44 +244,14 @@
                 toast.classList.remove('translate-y-20', 'opacity-0');
                 
                 setTimeout(() => {
-                    window.open(fbLink, '_blank');
-                }, 1200);
+                    window.open(shopFBLink, '_blank');
+                }, 1000);
 
                 setTimeout(() => {
                     toast.classList.add('translate-y-20', 'opacity-0');
                 }, 4000);
             }).catch(() => {
-                window.open(fbLink, '_blank');
-            });
-        }
-
-        function filterProducts() {
-            const input = document.getElementById('search-input').value.toLowerCase();
-            const cards = document.querySelectorAll('.product-card');
-
-            cards.forEach(card => {
-                const text = card.innerText.toLowerCase();
-                card.style.display = text.includes(input) ? "flex" : "none";
-            });
-        }
-
-        function filterCategory(cat) {
-            const cards = document.querySelectorAll('.product-card');
-            const btns = document.querySelectorAll('.cat-btn');
-
-            btns.forEach(btn => {
-                btn.classList.remove('bg-rose-500', 'text-white');
-                btn.classList.add('bg-slate-100', 'text-slate-600');
-            });
-            event.target.classList.remove('bg-slate-100', 'text-slate-600');
-            event.target.classList.add('bg-rose-500', 'text-white');
-
-            cards.forEach(card => {
-                if (cat === 'all' || card.getAttribute('data-category') === cat) {
-                    card.style.display = "flex";
-                } else {
-                    card.style.display = "none";
-                }
+                window.open(shopFBLink, '_blank');
             });
         }
     </script>
