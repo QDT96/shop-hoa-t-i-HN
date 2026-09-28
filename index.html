@@ -1,258 +1,1192 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop Hoa Tươi - Bloom Elegance</title>
+    <title>Bloom & Grace - Hoa Tươi & Tráp Cưới Hỏi Hiện Đại</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blush: {
+                            50: '#fff5f7',
+                            100: '#fed7e2',
+                            200: '#fbb6ce',
+                            300: '#f687b3',
+                            400: '#ed64a6',
+                            500: '#e24e8e',
+                            600: '#d53f8c',
+                        },
+                        dusty: {
+                            rose: '#D8A7B1',
+                            cream: '#FFF9F5',
+                            sage: '#8F9E8B',
+                            gold: '#D4AF37',
+                            dark: '#2C2224',
+                            card: '#FCF8F6'
+                        },
+                        zalo: {
+                            blue: '#0068FF',
+                            hover: '#0052cc'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .font-serif-title { font-family: 'Playfair Display', serif; }
+        .font-serif-title {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .bg-dusty-gradient {
+            background: linear-gradient(135deg, #FFF9F5 0%, #F5E8E4 100%);
+        }
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #AA771C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFF9F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D8A7B1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b88691;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(216, 167, 177, 0.25);
+        }
+        @keyframes pulse-subtle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .animate-pulse-subtle {
+            animation: pulse-subtle 2.5s infinite;
+        }
     </style>
 </head>
-<body class="bg-[#FFFDF9] text-slate-700 min-h-screen flex flex-col justify-between">
+<body class="font-sans bg-[#FFF9F5] text-dusty-dark antialiased selection:bg-dusty-rose selection:text-white">
 
-    <!-- Header / Navigation -->
-    <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-rose-100/60 shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-            <!-- Logo -->
-            <a href="index.html" class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-full bg-rose-100 flex items-center justify-center text-rose-500">
-                    <i class="fa-solid fa-spa text-lg"></i>
+    <!-- Announcement Bar -->
+    <div class="bg-dusty-rose text-white text-xs md:text-sm py-2 px-4 text-center tracking-wide font-light flex justify-center items-center gap-2">
+        <span>✨ Ưu đãi đặc biệt: Tặng ngay Voucher 1.000.000đ khi đặt Combo Tráp Cưới + Trang trí gia tiên</span>
+        <span class="hidden md:inline-block">• Tư vấn qua Zalo 24/7: 0987.654.321</span>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-rose-100/60 transition-all duration-300" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center lg:hidden">
+                    <button id="mobileMenuBtn" class="text-gray-700 hover:text-dusty-rose p-2 rounded-lg focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
                 </div>
-                <div>
-                    <span class="font-serif-title font-bold text-xl tracking-wide text-slate-800">Bloom Elegance</span>
-                    <p class="text-[10px] tracking-wider text-rose-400 font-semibold uppercase -mt-1">Hoa Tươi & Quà Tặng</p>
+
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 rounded-full bg-dusty-rose/20 flex items-center justify-center group-hover:bg-dusty-rose transition duration-300">
+                        <i class="fa-solid fa-spa text-dusty-rose group-hover:text-white text-xl transition duration-300"></i>
+                    </div>
+                    <div>
+                        <span class="font-serif-title text-2xl md:text-3xl font-bold tracking-tight text-gray-900 block leading-none">BLOOM & GRACE</span>
+                        <span class="text-[10px] tracking-[0.25em] text-dusty-sage uppercase font-semibold">Hoa Tươi & Tráp Cưới</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-gray-700">
+                    <a href="#home" class="hover:text-dusty-rose transition-colors py-1 border-b-2 border-transparent hover:border-dusty-rose">Trang Chủ</a>
+                    <a href="#catalog" class="hover:text-dusty-rose transition-colors py-1 border-b-2 border-transparent hover:border-dusty-rose">Tráp Cưới Hiện Đại</a>
+                    <a href="#catalog" class="hover:text-dusty-rose transition-colors py-1 border-b-2 border-transparent hover:border-dusty-rose">Hoa Tươi Cô Dâu</a>
+                    <a href="#combo-gia" class="hover:text-dusty-rose transition-colors py-1 border-b-2 border-transparent hover:border-dusty-rose">Bảng Giá Combo</a>
+                    <a href="#sns-trend" class="hover:text-dusty-rose transition-colors py-1 border-b-2 border-transparent hover:border-dusty-rose flex items-center gap-1">
+                        <i class="fa-solid fa-fire text-rose-500 text-xs"></i> Trending SNS
+                    </a>
+                    <a href="#testimonials" class="hover:text-dusty-rose transition-colors py-1 border-b-2 border-transparent hover:border-dusty-rose">Đánh Giá</a>
+                </nav>
+
+                <!-- Actions Right (Zalo CTA & Cart) -->
+                <div class="flex items-center gap-3">
+                    <!-- Direct Zalo Contact Button -->
+                    <a href="https://zalo.me/0987654321" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 bg-zalo-blue hover:bg-zalo-hover text-white px-4 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-comment-dots text-sm"></i>
+                        <span>Zalo Tư Vấn</span>
+                    </a>
+
+                    <!-- Booking Form Modal Opener -->
+                    <button onclick="openBookingModal()" class="inline-flex items-center gap-2 bg-dusty-rose text-white px-4 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase hover:bg-rose-400 transition-all shadow-sm hover:shadow-md transform hover:-translate-y-0.5">
+                        <i class="fa-regular fa-calendar-check text-sm"></i>
+                        <span>Đặt Lịch Ngày Cưới</span>
+                    </button>
+
+                    <!-- Cart Toggle Button -->
+                    <button id="cartBtn" class="relative p-2.5 text-gray-700 hover:text-dusty-rose transition-colors rounded-full hover:bg-rose-50">
+                        <i class="fa-solid fa-bag-shopping text-xl"></i>
+                        <span id="cartBadge" class="absolute top-1 right-1 bg-rose-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center animate-pulse">0</span>
+                    </button>
                 </div>
-            </a>
+            </div>
+        </div>
 
-            <!-- Menu Navigation -->
-            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-600">
-                <a href="index.html" class="text-rose-500 font-semibold">Trang Chủ</a>
-                <a href="san-pham.html" class="hover:text-rose-500 transition">Bộ Sưu Tập</a>
-                <a href="#about" class="hover:text-rose-500 transition">Về Chúng Tôi</a>
-                <a href="#contact" class="hover:text-rose-500 transition">Liên Hệ</a>
-            </nav>
-
-            <!-- Call to Action Button -->
-            <a href="https://facebook.com" id="fb-header-btn" target="_blank" class="bg-[#2563EB] hover:bg-blue-700 text-white font-medium text-sm px-5 py-2.5 rounded-full shadow-sm transition flex items-center gap-2">
-                <i class="fa-brands fa-facebook"></i>
-                <span>Ghé thăm Facebook</span>
-            </a>
+        <!-- Mobile Menu Drawer -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-rose-100 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-rose-50 hover:text-dusty-rose">Trang Chủ</a>
+            <a href="#catalog" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-rose-50 hover:text-dusty-rose">Tráp Cưới Hỏi Hiện Đại</a>
+            <a href="#catalog" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-rose-50 hover:text-dusty-rose">Hoa Tươi Cô Dâu & Lễ</a>
+            <a href="#combo-gia" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-rose-50 hover:text-dusty-rose">Bảng Giá Combo</a>
+            <a href="#sns-trend" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-rose-50 hover:text-dusty-rose">Xu Hướng Trend SNS</a>
+            <a href="#testimonials" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-rose-50 hover:text-dusty-rose">Đánh Giá Từ Cô Dâu</a>
+            
+            <div class="pt-2 space-y-2">
+                <a href="https://zalo.me/0987654321" target="_blank" class="w-full bg-zalo-blue text-white py-3 rounded-xl font-semibold text-sm uppercase tracking-wider flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-comment-dots"></i> Chat Trực Tiếp Qua Zalo
+                </a>
+                <button onclick="openBookingModal()" class="w-full bg-dusty-rose text-white py-3 rounded-xl font-semibold text-sm uppercase tracking-wider flex items-center justify-center gap-2">
+                    <i class="fa-regular fa-calendar-check"></i> Đặt Lịch Tư Vấn Sang Zalo
+                </button>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-b from-rose-50/50 via-[#FFFDF9] to-[#FFFDF9] py-16 px-4">
-        <div class="max-w-3xl mx-auto text-center space-y-6">
-            <!-- Badge -->
-            <div class="inline-flex items-center gap-2 bg-rose-50 border border-rose-200/60 px-4 py-1.5 rounded-full">
-                <i class="fa-solid fa-heart text-rose-400 text-xs"></i>
-                <span class="text-rose-500 font-semibold tracking-wider text-xs uppercase">Hoa tươi tuyển chọn trong ngày</span>
+    <section id="home" class="relative overflow-hidden pt-8 pb-20 md:py-28 bg-dusty-gradient">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-rose-200/30 blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 rounded-full bg-dusty-sage/20 blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Text Content -->
+                <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-white/80 border border-rose-200 px-4 py-1.5 rounded-full text-xs font-semibold text-dusty-rose shadow-sm">
+                        <i class="fa-brands fa-tiktok text-black text-sm"></i>
+                        <span>Xu hướng Tráp Cưới Hot Trend SNS 2026</span>
+                    </div>
+
+                    <h1 class="font-serif-title text-4xl sm:text-5xl lg:text-6xl font-normal text-gray-900 leading-[1.15]">
+                        Nghệ Thuật Flower & <br>
+                        <span class="italic text-dusty-rose font-medium">Tráp Cưới Hỏi</span> Hiện Đại
+                    </h1>
+
+                    <p class="text-gray-600 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        Tôn vinh khoảnh khắc thiêng liêng với những bộ tráp kết thủ công tinh xảo, tráp acrylic sang trọng & phối hoa tươi nhập khẩu. Kết nối ngay với chúng tôi qua Zalo để nhận mẫu tư vấn độc bản!
+                    </p>
+
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <button onclick="openBookingModal()" class="w-full sm:w-auto px-8 py-4 bg-dusty-rose hover:bg-rose-400 text-white rounded-full font-medium text-sm tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 text-center flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <span>Đặt Lịch Tư Vấn Zalo</span>
+                        </button>
+                        <a href="https://zalo.me/0987654321" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 bg-zalo-blue hover:bg-zalo-hover text-white rounded-full font-medium text-sm tracking-wide shadow-md hover:shadow-lg transition-all duration-300 text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-comment-dots text-base"></i>
+                            <span>Chat Zalo Trực Tiếp</span>
+                        </a>
+                    </div>
+
+                    <!-- Micro Trust Badge -->
+                    <div class="pt-6 border-t border-rose-200/50 grid grid-cols-3 gap-2 text-center lg:text-left">
+                        <div>
+                            <div class="font-serif-title text-2xl font-bold text-gray-900">1,500+</div>
+                            <div class="text-xs text-gray-500">Cặp đôi tin chọn</div>
+                        </div>
+                        <div>
+                            <div class="font-serif-title text-2xl font-bold text-gray-900">100%</div>
+                            <div class="text-xs text-gray-500">Hoa tươi nhập khẩu</div>
+                        </div>
+                        <div>
+                            <div class="font-serif-title text-2xl font-bold text-gray-900">4.9 ★</div>
+                            <div class="text-xs text-gray-500">Đánh giá xuất sắc</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Visual Banner -->
+                <div class="lg:col-span-6 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <!-- Main Hero Image Frame -->
+                        <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] bg-rose-50">
+                            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1000" 
+                                 alt="Tráp cưới hoa tươi hiện đại" 
+                                 class="w-full h-full object-cover transform hover:scale-105 transition duration-700"
+                                 onerror="this.src='https://placehold.co/800x1000/F5E8E4/2C2224?text=Bloom+%26+Grace+Wedding'">
+                        </div>
+
+                        <!-- Floating Glassmorphism Badge 1 -->
+                        <div class="absolute -bottom-6 -left-6 z-20 glass-card p-4 rounded-2xl shadow-xl max-w-xs hidden sm:flex items-center gap-3 animate-pulse-subtle">
+                            <div class="w-12 h-12 rounded-full bg-zalo-blue/10 flex items-center justify-center text-zalo-blue text-xl shrink-0">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-900">Phản Hồi Siêu Tốc</p>
+                                <p class="text-[11px] text-gray-500">Tư vấn báo giá qua Zalo trong 3 phút</p>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge 2 -->
+                        <div class="absolute -top-4 -right-4 z-20 bg-white p-3.5 rounded-2xl shadow-lg border border-rose-100 flex items-center gap-3">
+                            <div class="flex -space-x-2 overflow-hidden">
+                                <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" alt="">
+                                <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" alt="">
+                            </div>
+                            <div class="text-xs">
+                                <span class="font-bold text-gray-900 block">Kín lịch mùa cưới</span>
+                                <span class="text-rose-500 text-[10px]">● Đang nhận lịch tháng này</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+        </div>
+    </section>
 
-            <!-- Main Heading -->
-            <h1 class="font-serif-title text-4xl sm:text-5xl text-slate-800 font-bold leading-tight">
-                Gửi Trọn Tình Cảm Vừa Chớm Nở Qua <br/>
-                <span class="italic text-rose-400 font-normal">Từng Cánh Hoa</span>
-            </h1>
+    <!-- Highlights & Feature Badges -->
+    <section class="py-12 bg-white border-y border-rose-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                
+                <div class="p-4 rounded-2xl hover:bg-dusty-cream transition-colors">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-rose-50 flex items-center justify-center text-dusty-rose text-xl">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="font-serif-title font-semibold text-lg text-gray-900">Thiết Kế Độc Bản</h3>
+                    <p class="text-xs text-gray-500 mt-1">Cá nhân hóa theo tone màu & ý tưởng yêu thích</p>
+                </div>
 
-            <!-- Description -->
-            <p class="text-slate-500 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
-                Mang lại cảm xúc tinh tế cho những dịp đặc biệt. Lựa chọn mẫu hoa yêu thích và nhắn tin mã cho shop qua Facebook để nhận tư vấn thiết kế nhanh nhất.
-            </p>
+                <div class="p-4 rounded-2xl hover:bg-dusty-cream transition-colors">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-rose-50 flex items-center justify-center text-dusty-rose text-xl">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <h3 class="font-serif-title font-semibold text-lg text-gray-900">Hoa Tươi Tuyển Chọn</h3>
+                    <p class="text-xs text-gray-500 mt-1">100% Hoa tươi giữ dáng suốt ngày đại lễ</p>
+                </div>
 
-            <!-- Action Buttons -->
-            <div class="flex flex-wrap justify-center items-center gap-4 pt-2">
-                <a href="#featured-products" class="bg-slate-900 hover:bg-slate-800 text-white font-medium text-sm px-6 py-3 rounded-full shadow-md transition flex items-center gap-2">
-                    <span>Khám phá bộ sưu tập</span>
-                    <i class="fa-solid fa-arrow-down text-xs"></i>
-                </a>
-                <button onclick="toggleConfigModal()" class="bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-medium text-sm px-5 py-3 rounded-full transition flex items-center gap-2">
-                    <i class="fa-solid fa-gear text-slate-400"></i>
-                    <span>Cấu hình Link Shop</span>
+                <div class="p-4 rounded-2xl hover:bg-dusty-cream transition-colors">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-rose-50 flex items-center justify-center text-dusty-rose text-xl">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <h3 class="font-serif-title font-semibold text-lg text-gray-900">Giao Hàng Chuyên Nghiệp</h3>
+                    <p class="text-xs text-gray-500 mt-1">Vận chuyển xe riêng an toàn tuyệt đối</p>
+                </div>
+
+                <div class="p-4 rounded-2xl hover:bg-dusty-cream transition-colors">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-rose-50 flex items-center justify-center text-dusty-rose text-xl">
+                        <i class="fa-solid fa-headset text-zalo-blue"></i>
+                    </div>
+                    <h3 class="font-serif-title font-semibold text-lg text-gray-900">Tư Vấn Zalo 24/7</h3>
+                    <p class="text-xs text-gray-500 mt-1">Hỗ trợ gửi Catalogue mẫu & báo giá tức thì</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Catalog Section -->
+    <section id="catalog" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="text-xs font-bold tracking-widest text-dusty-sage uppercase">Danh Mục Sản Phẩm</span>
+            <h2 class="font-serif-title text-3xl md:text-5xl font-normal text-gray-900 mt-2">Bộ Sưu Tập Hoa & Tráp Cưới</h2>
+            <p class="text-gray-500 text-sm mt-3">Các thiết kế tráp cưới Acrylic, Sơn mài, Kết Rồng Phượng & Hoa tươi chuẩn phong cách SNS 2026</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex justify-center mb-10 overflow-x-auto pb-2 scrollbar-none">
+            <div class="inline-flex p-1.5 bg-rose-50/80 rounded-full border border-rose-100 gap-1">
+                <button onclick="filterCatalog('all')" class="tab-btn active px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 bg-white text-dusty-rose shadow-sm" data-tab="all">
+                    Tất Cả Sản Phẩm
+                </button>
+                <button onclick="filterCatalog('trap')" class="tab-btn px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 text-gray-600 hover:text-dusty-rose" data-tab="trap">
+                    ✨ Tráp Cưới Hỏi Hiện Đại
+                </button>
+                <button onclick="filterCatalog('hoa')" class="tab-btn px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 text-gray-600 hover:text-dusty-rose" data-tab="hoa">
+                    🌸 Hoa Tươi Cô Dâu & Sự Kiện
+                </button>
+                <button onclick="filterCatalog('combo')" class="tab-btn px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 text-gray-600 hover:text-dusty-rose" data-tab="combo">
+                    💍 Combo Trang Trí Gia Tiên
                 </button>
             </div>
+        </div>
 
-            <!-- Sub Features -->
-            <div class="grid grid-cols-3 gap-4 pt-10 border-t border-rose-100/60 max-w-xl mx-auto">
-                <div class="text-center">
-                    <div class="font-serif-title text-xl font-bold text-slate-800">100%</div>
-                    <div class="text-xs text-slate-400">Hoa Tươi Tự Nhiên</div>
+        <!-- Product Grid -->
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            <!-- Dynamic JavaScript rendering of Products -->
+        </div>
+    </section>
+
+    <!-- TikTok / Instagram Viral Trend Section -->
+    <section id="sns-trend" class="py-20 bg-rose-50/50 border-y border-rose-100/60 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <div class="inline-flex items-center gap-2 text-xs font-bold text-rose-500 uppercase tracking-wider mb-2">
+                        <i class="fa-brands fa-instagram text-base"></i> Trend TikTok & Instagram 2026
+                    </div>
+                    <h2 class="font-serif-title text-3xl md:text-5xl font-normal text-gray-900">Mẫu Tráp Đang Viral Trên Mạng Xã Hội</h2>
                 </div>
-                <div class="text-center">
-                    <div class="font-serif-title text-xl font-bold text-slate-800">Fast</div>
-                    <div class="text-xs text-slate-400">Giao Nhanh 2h Nội Thành</div>
+                <p class="text-gray-500 text-sm max-w-md mt-4 md:mt-0">
+                    Cập nhật nhanh nhất các xu hướng tráp cưới kết hoa tươi, rồng phượng nghệ thuật & tráp trong suốt acrylic được yêu thích nhất.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Trend Card 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-rose-100 group">
+                    <div class="relative overflow-hidden aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&q=80&w=800" 
+                             alt="Tráp Cưới Rồng Phượng LED" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-3 py-1 rounded-full flex items-center gap-1.5">
+                            <i class="fa-brands fa-tiktok text-xs text-rose-400"></i> 1.2M Views TikTok
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-[11px] text-dusty-sage uppercase font-bold tracking-wider">Bộ Tráp Hoàng Gia</span>
+                        <h3 class="font-serif-title text-xl font-bold text-gray-900 mt-1">Tráp Rồng Phượng Sơn Son Kết LED Hiện Đại</h3>
+                        <p class="text-xs text-gray-500 mt-2 line-clamp-2">Sự kết hợp giữa nét truyền thống chạm khắc và ánh sáng LED nghệ thuật tôn vinh sự sang trọng.</p>
+                        <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+                            <span class="text-sm font-bold text-dusty-rose">Từ 8.500.000đ</span>
+                            <button onclick="sendZaloInquiry('Tráp Rồng Phượng LED Hiện Đại')" class="bg-zalo-blue hover:bg-zalo-hover text-white px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1 transition">
+                                <i class="fa-solid fa-paper-plane text-[10px]"></i> Hỏi Mẫu Qua Zalo
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-center">
-                    <div class="font-serif-title text-xl font-bold text-slate-800">Custom</div>
-                    <div class="text-xs text-slate-400">Thêu Thiệp Theo Yêu Cầu</div>
+
+                <!-- Trend Card 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-rose-100 group">
+                    <div class="relative overflow-hidden aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&q=80&w=800" 
+                             alt="Tráp Sen Đá Minimalist" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-3 py-1 rounded-full flex items-center gap-1.5">
+                            <i class="fa-brands fa-instagram text-xs text-rose-300"></i> Trending Pinterest
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-[11px] text-dusty-sage uppercase font-bold tracking-wider">Minimalist Style</span>
+                        <h3 class="font-serif-title text-xl font-bold text-gray-900 mt-1">Tráp Sen Đá & Hoa Baby Nhập Hàn Quốc</h3>
+                        <p class="text-xs text-gray-500 mt-2 line-clamp-2">Tone màu xanh Sage mộc mạc, tượng trưng cho tình yêu bền chặt, trường tồn theo năm tháng.</p>
+                        <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+                            <span class="text-sm font-bold text-dusty-rose">Từ 6.200.000đ</span>
+                            <button onclick="sendZaloInquiry('Tráp Sen Đá Minimalist')" class="bg-zalo-blue hover:bg-zalo-hover text-white px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1 transition">
+                                <i class="fa-solid fa-paper-plane text-[10px]"></i> Hỏi Mẫu Qua Zalo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trend Card 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-rose-100 group">
+                    <div class="relative overflow-hidden aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&q=80&w=800" 
+                             alt="Bó hoa cô dâu Tulip" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-3 py-1 rounded-full flex items-center gap-1.5">
+                            <i class="fa-solid fa-heart text-xs text-rose-500"></i> Hot Choice 2026
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-[11px] text-dusty-sage uppercase font-bold tracking-wider">Hoa Cầm Tay Cô Dâu</span>
+                        <h3 class="font-serif-title text-xl font-bold text-gray-900 mt-1">Hoa Cầm Tay Tulip Hà Lan & Linh Lan White</h3>
+                        <p class="text-xs text-gray-500 mt-2 line-clamp-2">Vẻ đẹp kiêu sa, thuần khiết được phái đẹp yêu thích nhất trong các lễ cưới mùa xuân.</p>
+                        <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+                            <span class="text-sm font-bold text-dusty-rose">1.850.000đ</span>
+                            <button onclick="sendZaloInquiry('Bó Hoa Cầm Tay Tulip Hà Lan')" class="bg-zalo-blue hover:bg-zalo-hover text-white px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1 transition">
+                                <i class="fa-solid fa-paper-plane text-[10px]"></i> Hỏi Mẫu Qua Zalo
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Notification Toast -->
-    <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-2xl translate-y-20 opacity-0 transition-all duration-300 z-50 flex items-center gap-3">
-        <i class="fa-solid fa-circle-check text-emerald-400 text-xl"></i>
-        <div>
-            <p class="font-medium text-sm">Đã sao chép mã hoa <span id="toast-code" class="text-amber-300 font-bold"></span>!</p>
-            <p class="text-xs text-slate-300">Đang chuyển tới Messenger/Facebook...</p>
-        </div>
-    </div>
-
-    <!-- Featured Products Section -->
-    <main id="featured-products" class="max-w-6xl mx-auto px-4 py-8 flex-1 w-full">
-        <div class="text-center mb-8">
-            <h2 class="font-serif-title text-2xl md:text-3xl font-bold text-slate-800">Mẫu Hoa Tươi Nổi Bật</h2>
-            <p class="text-xs text-slate-400 mt-1">Các thiết kế hoa được yêu thích nhất trong tuần</p>
+    <!-- Wedding Packages Pricing Table -->
+    <section id="combo-gia" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="text-xs font-bold tracking-widest text-dusty-rose uppercase">Bảng Giá Trọn Gói</span>
+            <h2 class="font-serif-title text-3xl md:text-5xl font-normal text-gray-900 mt-2">Các Gói Tráp Cưới Hỏi Khuyên Dùng</h2>
+            <p class="text-gray-500 text-sm mt-3">Lựa chọn combo tráp hỏi đầy đủ thủ tục, giữ trọn nét truyền thống và hơi thở hiện đại</p>
         </div>
 
-        <!-- Product Grid (Trang chủ chỉ hiển thị các mẫu nổi bật) -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <!-- Product 1 -->
-            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-rose-100/60 flex flex-col">
-                <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=500&q=80" alt="Hoa Hồng Đỏ" class="w-full h-56 object-cover">
-                <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
-                    <div>
-                        <span class="bg-rose-50 text-rose-500 text-[11px] font-semibold px-2 py-0.5 rounded">HOA-001</span>
-                        <h3 class="font-bold text-slate-800 text-sm mt-2">Bó Hoa Hồng Đỏ Nhập Khẩu</h3>
-                        <p class="text-xs text-slate-400 mt-1 line-clamp-2">Sự kết hợp giữa hồng đỏ quyến rũ và baby trắng tinh khôi.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+            
+            <!-- Package 1: 5 Tráp -->
+            <div class="bg-white rounded-3xl p-8 border border-rose-100 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between relative">
+                <div>
+                    <div class="text-center pb-6 border-b border-gray-100">
+                        <span class="text-xs font-bold uppercase tracking-widest text-dusty-sage">Cơ Bản Elegant</span>
+                        <h3 class="font-serif-title text-3xl font-bold text-gray-900 mt-2">Bộ 5 Tráp Cưới</h3>
+                        <div class="mt-4">
+                            <span class="text-3xl font-bold text-dusty-rose">6.800.000</span>
+                            <span class="text-xs text-gray-500"> VNĐ</span>
+                        </div>
                     </div>
-                    <div>
-                        <div class="text-rose-500 font-bold text-base mb-3">450.000 VNĐ</div>
-                        <button onclick="orderFlower('HOA-001')" class="w-full bg-slate-900 hover:bg-rose-500 text-white text-xs font-medium py-2.5 rounded-xl transition flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-facebook-messenger"></i> Đặt qua Facebook
-                        </button>
+                    <ul class="py-6 space-y-4 text-xs md:text-sm text-gray-600">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-dusty-sage text-sm"></i>
+                            <span>1 Tráp Trầu Cau kết hoa tươi</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-dusty-sage text-sm"></i>
+                            <span>1 Tráp Rượu + Trà nhập khẩu</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-dusty-sage text-sm"></i>
+                            <span>1 Tráp Bánh Cốm / Bánh Phu Thê</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-dusty-sage text-sm"></i>
+                            <span>1 Tráp Hoa Quả Kết Nghệ Thuật</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-dusty-sage text-sm"></i>
+                            <span>1 Tráp Hạt Sen / Chè Thái Nguyên</span>
+                        </li>
+                    </ul>
+                </div>
+                <button onclick="selectPackage('Gói 5 Tráp Cưới Cơ Bản (6.800.000đ)')" class="w-full py-3.5 rounded-full bg-zalo-blue hover:bg-zalo-hover text-white font-semibold transition duration-300 text-xs tracking-wider uppercase flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i> Đặt Gói Này Qua Zalo
+                </button>
+            </div>
+
+            <!-- Package 2: 7 Tráp (Best Seller) -->
+            <div class="bg-white rounded-3xl p-8 border-2 border-dusty-rose shadow-xl relative flex flex-col justify-between transform md:-translate-y-4">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-dusty-rose text-white text-[11px] font-bold px-4 py-1 rounded-full uppercase tracking-widest shadow-md">
+                    Phổ Biến Nhất ★
+                </div>
+                <div>
+                    <div class="text-center pb-6 border-b border-gray-100">
+                        <span class="text-xs font-bold uppercase tracking-widest text-dusty-rose">Cao Cấp Luxury</span>
+                        <h3 class="font-serif-title text-3xl font-bold text-gray-900 mt-2">Bộ 7 Tráp Cưới</h3>
+                        <div class="mt-4">
+                            <span class="text-3xl font-bold text-dusty-rose">9.800.000</span>
+                            <span class="text-xs text-gray-500"> VNĐ</span>
+                        </div>
+                    </div>
+                    <ul class="py-6 space-y-4 text-xs md:text-sm text-gray-600">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-dusty-rose text-sm"></i>
+                            <span><strong>Đầy đủ 5 tráp cơ bản cao cấp</strong></span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-dusty-rose text-sm"></i>
+                            <span>+ 1 Tráp Bánh Xu Xê Nghệ Thuật</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-dusty-rose text-sm"></i>
+                            <span>+ 1 Tráp Lợn Quay / Xôi Gấc Dừa</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-dusty-rose text-sm"></i>
+                            <span>Tráp trang trí Hoa Tươi Nhập Khẩu 100%</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-dusty-rose text-sm"></i>
+                            <span>Tặng Bó Hoa Cầm Tay Cô Dâu</span>
+                        </li>
+                    </ul>
+                </div>
+                <button onclick="selectPackage('Gói 7 Tráp Cưới Luxury (9.800.000đ)')" class="w-full py-3.5 rounded-full bg-zalo-blue hover:bg-zalo-hover text-white font-semibold transition duration-300 text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-md">
+                    <i class="fa-solid fa-paper-plane"></i> Đặt Gói Hot Qua Zalo
+                </button>
+            </div>
+
+            <!-- Package 3: 9 Tráp VIP -->
+            <div class="bg-white rounded-3xl p-8 border border-rose-100 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="text-center pb-6 border-b border-gray-100">
+                        <span class="text-xs font-bold uppercase tracking-widest text-dusty-gold">Đặc Biệt Royal</span>
+                        <h3 class="font-serif-title text-3xl font-bold text-gray-900 mt-2">Bộ 9 Tráp Rồng Phượng</h3>
+                        <div class="mt-4">
+                            <span class="text-3xl font-bold text-dusty-rose">15.500.000</span>
+                            <span class="text-xs text-gray-500"> VNĐ</span>
+                        </div>
+                    </div>
+                    <ul class="py-6 space-y-4 text-xs md:text-sm text-gray-600">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-dusty-sage text-sm"></i>
+                            <span>Tráp Rồng Phượng kết tay thủ công tinh xảo</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-dusty-sage text-sm"></i>
+                            <span>Khay tráp sơn mài / Acrylic hiện đại</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-dusty-sage text-sm"></i>
+                            <span>Toàn bộ hoa Lan Hồ Điệp & Rose nhập khẩu</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-dusty-sage text-sm"></i>
+                            <span>Miễn phí vận chuyển & nhân sự sắp xếp</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-dusty-sage text-sm"></i>
+                            <span>Tặng Voucher 1Tr cho trang trí Gia Tiên</span>
+                        </li>
+                    </ul>
+                </div>
+                <button onclick="selectPackage('Gói 9 Tráp Rồng Phượng Royal VIP (15.500.000đ)')" class="w-full py-3.5 rounded-full bg-zalo-blue hover:bg-zalo-hover text-white font-semibold transition duration-300 text-xs tracking-wider uppercase flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i> Đặt Gói VIP Qua Zalo
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-dusty-gradient border-t border-rose-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-14">
+                <span class="text-xs font-bold tracking-widest text-dusty-rose uppercase">Cảm Nhận Thực Tế</span>
+                <h2 class="font-serif-title text-3xl md:text-4xl font-normal text-gray-900 mt-2">Cô Dâu & Chú Rể Nói Gì</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="glass-card p-6 rounded-2xl relative">
+                    <div class="flex items-center gap-1 text-amber-400 text-sm mb-3">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs md:text-sm text-gray-600 italic leading-relaxed">
+                        "Mình mê mẫu Tráp Sen Đá trên TikTok của Bloom & Grace ngay từ lần đầu nhìn thấy. Tư vấn qua Zalo siêu nhiệt tình, báo giá rõ ràng. Ngày hỏi nhận tráp thật sự vỡ ơ vì quá đẹp!"
+                    </p>
+                    <div class="mt-6 flex items-center gap-3 pt-4 border-t border-rose-100">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120" alt="Cô dâu Khánh Linh" class="w-10 h-10 rounded-full object-cover">
+                        <div>
+                            <h4 class="text-xs font-bold text-gray-900">Khánh Linh & Minh Quân</h4>
+                            <p class="text-[10px] text-gray-500">Lễ ăn hỏi tại Hà Nội</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Product 2 -->
-            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-rose-100/60 flex flex-col">
-                <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=500&q=80" alt="Hoa Tone Pastel" class="w-full h-56 object-cover">
-                <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
-                    <div>
-                        <span class="bg-rose-50 text-rose-500 text-[11px] font-semibold px-2 py-0.5 rounded">HOA-002</span>
-                        <h3 class="font-bold text-slate-800 text-sm mt-2">Bó Hoa Tone Pastel</h3>
-                        <p class="text-xs text-slate-400 mt-1 line-clamp-2">Tone màu kem hồng ngọt ngào thích hợp tặng người thân, người yêu.</p>
+                <!-- Testimonial 2 -->
+                <div class="glass-card p-6 rounded-2xl relative">
+                    <div class="flex items-center gap-1 text-amber-400 text-sm mb-3">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
-                    <div>
-                        <div class="text-rose-500 font-bold text-base mb-3">520.000 VNĐ</div>
-                        <button onclick="orderFlower('HOA-002')" class="w-full bg-slate-900 hover:bg-rose-500 text-white text-xs font-medium py-2.5 rounded-xl transition flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-facebook-messenger"></i> Đặt qua Facebook
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 3 -->
-            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-rose-100/60 flex flex-col">
-                <img src="https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?w=500&q=80" alt="Hoa Hướng Dương" class="w-full h-56 object-cover">
-                <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
-                    <div>
-                        <span class="bg-rose-50 text-rose-500 text-[11px] font-semibold px-2 py-0.5 rounded">HOA-003</span>
-                        <h3 class="font-bold text-slate-800 text-sm mt-2">Bó Hướng Dương Rực Rỡ</h3>
-                        <p class="text-xs text-slate-400 mt-1 line-clamp-2">Tượng trưng cho sự may mắn, năng lượng tích cực và thành công.</p>
-                    </div>
-                    <div>
-                        <div class="text-rose-500 font-bold text-base mb-3">380.000 VNĐ</div>
-                        <button onclick="orderFlower('HOA-003')" class="w-full bg-slate-900 hover:bg-rose-500 text-white text-xs font-medium py-2.5 rounded-xl transition flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-facebook-messenger"></i> Đặt qua Facebook
-                        </button>
+                    <p class="text-xs md:text-sm text-gray-600 italic leading-relaxed">
+                        "Dịch vụ chu đáo cực kỳ. Hoa cưới tươi suốt cả ngày dài đón khách mà không hề bị héo. Mình chỉ cần trao đổi qua Zalo chọn tone màu hoa là shop làm chuẩn 100%."
+                    </p>
+                    <div class="mt-6 flex items-center gap-3 pt-4 border-t border-rose-100">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=120" alt="Cô dâu Phương Thảo" class="w-10 h-10 rounded-full object-cover">
+                        <div>
+                            <h4 class="text-xs font-bold text-gray-900">Phương Thảo & Hoàng Nam</h4>
+                            <p class="text-[10px] text-gray-500">Lễ cưới tại Hải Phòng</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Product 4 -->
-            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-rose-100/60 flex flex-col">
-                <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=500&q=80" alt="Hoa Tulip" class="w-full h-56 object-cover">
-                <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
-                    <div>
-                        <span class="bg-rose-50 text-rose-500 text-[11px] font-semibold px-2 py-0.5 rounded">HOA-004</span>
-                        <h3 class="font-bold text-slate-800 text-sm mt-2">Bó Tulip Hà Lan Trắng</h3>
-                        <p class="text-xs text-slate-400 mt-1 line-clamp-2">Mẫu tulip trắng tinh khôi nhập khẩu cao cấp.</p>
+                <!-- Testimonial 3 -->
+                <div class="glass-card p-6 rounded-2xl relative">
+                    <div class="flex items-center gap-1 text-amber-400 text-sm mb-3">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
-                    <div>
-                        <div class="text-rose-500 font-bold text-base mb-3">680.000 VNĐ</div>
-                        <button onclick="orderFlower('HOA-004')" class="w-full bg-slate-900 hover:bg-rose-500 text-white text-xs font-medium py-2.5 rounded-xl transition flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-facebook-messenger"></i> Đặt qua Facebook
-                        </button>
+                    <p class="text-xs md:text-sm text-gray-600 italic leading-relaxed">
+                        "Gói 7 tráp cưới luxury rất đáng tiền. Mọi chi tiết hoa quả, bánh trái đều được bọc cẩn thận. Giao xe riêng đúng giờ hẹn không chậm một phút!"
+                    </p>
+                    <div class="mt-6 flex items-center gap-3 pt-4 border-t border-rose-100">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120" alt="Chú rể Tuấn Anh" class="w-10 h-10 rounded-full object-cover">
+                        <div>
+                            <h4 class="text-xs font-bold text-gray-900">Tuấn Anh & Huyền Trang</h4>
+                            <p class="text-[10px] text-gray-500">Lễ ăn hỏi tại Quảng Ninh</p>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
+    </section>
 
-        <!-- 🌟 ĐƯỜNG DẪN / NÚT CHUYỂN SANG TRANG XEM TẤT CẢ MẪU HOA 🌟 -->
-        <div class="mt-12 text-center">
-            <a href="san-pham.html" class="inline-flex items-center gap-3 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-medium text-sm px-8 py-3.5 rounded-full shadow-lg shadow-rose-200 transition-all hover:scale-105">
-                <span>Xem tất cả mẫu hoa (Bộ sưu tập đầy đủ)</span>
-                <i class="fa-solid fa-arrow-right text-xs"></i>
-            </a>
-        </div>
-    </main>
+    <!-- Footer Section -->
+    <footer class="bg-[#2C2224] text-white pt-16 pb-12 border-t border-rose-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-gray-800">
+                
+                <!-- Col 1: Brand Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-dusty-rose flex items-center justify-center text-white">
+                            <i class="fa-solid fa-spa text-sm"></i>
+                        </div>
+                        <span class="font-serif-title text-2xl font-bold tracking-tight text-white">BLOOM & GRACE</span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Chuyên thiết kế Tráp Cưới Hỏi Hiện Đại, Hoa Tươi Cô Dâu & Trang Trí Gia Tiên Trọn Gói. Mang đến sự tinh tế, chỉn chu nhất cho ngày hạnh phúc lứa đôi.
+                    </p>
+                    <div class="flex gap-3 pt-2">
+                        <a href="https://zalo.me/0987654321" target="_blank" class="w-8 h-8 rounded-full bg-zalo-blue flex items-center justify-center text-white hover:opacity-90 transition"><i class="fa-solid fa-comment-dots text-xs"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-dusty-rose transition"><i class="fa-brands fa-facebook-f text-xs"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-dusty-rose transition"><i class="fa-brands fa-tiktok text-xs"></i></a>
+                    </div>
+                </div>
 
-    <!-- Modal Cấu hình Link Shop -->
-    <div id="config-modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center hidden">
-        <div class="bg-white rounded-2xl p-6 max-w-md w-full mx-4 shadow-xl space-y-4">
-            <h3 class="font-serif-title font-bold text-lg text-slate-800">Cấu hình liên kết Facebook</h3>
-            <p class="text-xs text-slate-500">Nhập đường dẫn trang Facebook hoặc Messenger của bạn để nút đặt hàng tự động chuyển tới.</p>
-            <input type="text" id="shop-url-input" value="https://facebook.com" class="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-rose-400">
-            <div class="flex justify-end gap-2">
-                <button onclick="toggleConfigModal()" class="px-4 py-2 text-xs font-medium text-slate-600 hover:bg-slate-100 rounded-lg">Hủy</button>
-                <button onclick="saveConfig()" class="px-4 py-2 text-xs font-medium bg-rose-500 text-white rounded-lg hover:bg-rose-600">Lưu lại</button>
+                <!-- Col 2: Quick Links -->
+                <div>
+                    <h4 class="font-serif-title text-lg font-semibold text-rose-200 mb-4">Danh Mục Dịch Vụ</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li><a href="#catalog" class="hover:text-white transition">Tráp Cưới Rồng Phượng LED</a></li>
+                        <li><a href="#catalog" class="hover:text-white transition">Tráp Acrylic Trong Suốt</a></li>
+                        <li><a href="#catalog" class="hover:text-white transition">Hoa Cầm Tay Cô Dâu Tone Hàn</a></li>
+                        <li><a href="#catalog" class="hover:text-white transition">Trang Trí Gia Tiên Trọn Gói</a></li>
+                        <li><a href="#catalog" class="hover:text-white transition">Hoa Xe Cưới Cao Cấp</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Contact Info -->
+                <div>
+                    <h4 class="font-serif-title text-lg font-semibold text-rose-200 mb-4">Liên Hệ Showroom</h4>
+                    <ul class="space-y-3 text-xs text-gray-400">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-dusty-rose mt-0.5"></i>
+                            <span> Showroom 1: 168 Phan Châu Trinh, Q. Hải Châu, Đà Nẵng</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-dusty-rose mt-0.5"></i>
+                            <span> Showroom 2: 88 Lý Thường Kiệt, Hoàn Kiếm, Hà Nội</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-dusty-rose"></i>
+                            <span class="font-bold text-white">Hotline: 0987.654.321</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-comment-dots text-zalo-blue"></i>
+                            <a href="https://zalo.me/0987654321" target="_blank" class="font-bold text-zalo-blue hover:underline">Zalo Tư Vấn: 0987.654.321</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Quick Zalo Inquiry -->
+                <div>
+                    <h4 class="font-serif-title text-lg font-semibold text-rose-200 mb-4">Nhận Báo Giá Nhanh Qua Zalo</h4>
+                    <p class="text-xs text-gray-400 mb-3">Nhập số điện thoại, hệ thống sẽ mở Zalo trao đổi trực tiếp với tư vấn viên:</p>
+                    <form onsubmit="handleQuickZaloSubmit(event)" class="space-y-2">
+                        <input type="tel" id="quickPhone" required placeholder="Nhập SĐT / Zalo của bạn..." class="w-full px-3.5 py-2.5 rounded-xl bg-white/10 border border-gray-700 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-dusty-rose">
+                        <button type="submit" class="w-full bg-zalo-blue hover:bg-zalo-hover text-white py-2.5 rounded-xl text-xs font-semibold transition flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-paper-plane text-xs"></i> Gửi Yêu Cầu Sang Zalo
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="pt-8 text-center text-[11px] text-gray-500 flex flex-col sm:flex-row justify-between items-center gap-2">
+                <p>© 2026 Bloom & Grace Wedding Flower. All rights reserved.</p>
+                <p>Designed with Modern Elegance & Direct Zalo Integration</p>
             </div>
         </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-white border-t border-rose-100/60 py-6 text-center text-xs text-slate-400">
-        <p>© 2026 Bloom Elegance Shop. Tất cả quyền được bảo lưu.</p>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Cart Drawer (Slide-out) -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
+                <!-- Cart Header -->
+                <div class="p-6 bg-dusty-cream border-b border-rose-100 flex items-center justify-between">
+                    <h3 class="font-serif-title text-2xl font-bold text-gray-900 flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-dusty-rose"></i> Giỏ Hàng Chọn Mẫu
+                    </h3>
+                    <button onclick="toggleCart()" class="text-gray-400 hover:text-gray-600 p-1">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Cart Items List -->
+                <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-6 space-y-4">
+                    <!-- Dynamic rendering -->
+                </div>
+
+                <!-- Cart Footer -->
+                <div class="p-6 border-t border-rose-100 bg-white space-y-4">
+                    <div class="flex justify-between text-base font-semibold text-gray-900">
+                        <span>Tổng tạm tính:</span>
+                        <span id="cartTotalPrice" class="text-dusty-rose font-bold text-lg">0 VNĐ</span>
+                    </div>
+                    <p class="text-[11px] text-gray-400 italic">* Nội dung giỏ hàng sẽ tự động tạo lời nhắn gửi sang Zalo chính thức của Bloom & Grace</p>
+                    <button onclick="checkoutToZalo()" class="w-full py-3.5 bg-zalo-blue hover:bg-zalo-hover text-white rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition">
+                        <i class="fa-solid fa-paper-plane text-sm"></i> Chuyển Đơn Hàng Sang Zalo Tư Vấn
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Consultation Modal with Zalo Redirect -->
+    <div id="bookingModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl border border-rose-100">
+            <button onclick="closeBookingModal()" class="absolute top-5 right-5 text-gray-400 hover:text-gray-600">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <span class="text-xs font-bold text-dusty-rose uppercase tracking-widest">Tư Vấn Miễn Phí</span>
+                <h3 class="font-serif-title text-2xl md:text-3xl font-bold text-gray-900 mt-1">Đặt Lịch Chọn Tráp Cưới</h3>
+                <p class="text-xs text-gray-500 mt-1">Thông tin đăng ký sẽ tự động mở ứng dụng Zalo chuyển tới chuyên viên tư vấn</p>
+            </div>
+
+            <form onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Họ và tên Cô dâu/Chú rể *</label>
+                    <input type="text" id="bookName" required placeholder="VD: Nguyễn Văn A" class="w-full px-4 py-2.5 rounded-xl border border-rose-200 text-xs focus:outline-none focus:border-dusty-rose">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Số điện thoại / Zalo *</label>
+                    <input type="tel" id="bookPhone" required placeholder="VD: 0912345678" class="w-full px-4 py-2.5 rounded-xl border border-rose-200 text-xs focus:outline-none focus:border-dusty-rose">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Ngày dự kiến Lễ Hỏi</label>
+                        <input type="date" id="bookDate" class="w-full px-3 py-2.5 rounded-xl border border-rose-200 text-xs focus:outline-none focus:border-dusty-rose">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Dịch vụ quan tâm</label>
+                        <select id="bookService" class="w-full px-3 py-2.5 rounded-xl border border-rose-200 text-xs focus:outline-none focus:border-dusty-rose">
+                            <option>Bộ Tráp Cưới Hỏi Hiện Đại</option>
+                            <option>Hoa Cầm Tay Cô Dâu</option>
+                            <option>Trang Trí Gia Tiên</option>
+                            <option>Combo Trọn Gói Ngày Cưới</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Ghi chú yêu cầu đặc biệt</label>
+                    <textarea id="bookNote" rows="2" placeholder="VD: Tone màu hồng pastel, kết hoa lan hồ điệp..." class="w-full px-4 py-2.5 rounded-xl border border-rose-200 text-xs focus:outline-none focus:border-dusty-rose"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3.5 bg-zalo-blue hover:bg-zalo-hover text-white rounded-xl font-bold text-xs uppercase tracking-wider shadow-md transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i> Gửi Yêu Cầu Qua Zalo Tức Thì
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Quick View Product Modal -->
+    <div id="quickViewModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 relative shadow-2xl border border-rose-100 overflow-hidden">
+            <button onclick="closeQuickView()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 z-10">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div id="quickViewContent" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- JavaScript injected content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Zalo Contact Button Always On Screen -->
+    <div class="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3">
+        <a href="https://zalo.me/0987654321" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2 bg-zalo-blue hover:bg-zalo-hover text-white p-3.5 md:px-5 md:py-3.5 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 border-2 border-white">
+            <i class="fa-solid fa-comment-dots text-xl md:text-2xl animate-bounce"></i>
+            <span class="hidden md:inline text-xs font-bold uppercase tracking-wider">Tư Vấn Zalo</span>
+        </a>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 left-6 z-50 bg-gray-900 text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 transform -translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <i class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toastMessage" class="text-xs font-medium">Đã mở kết nối Zalo!</span>
+    </div>
+
+    <!-- JavaScript Application Logic -->
     <script>
-        let shopFBLink = localStorage.getItem('shop_fb_url') || 'https://facebook.com';
+        // Zalo Phone Constant
+        const ZALO_PHONE = "0987654321";
 
-        function toggleConfigModal() {
-            const modal = document.getElementById('config-modal');
-            document.getElementById('shop-url-input').value = shopFBLink;
-            modal.classList.toggle('hidden');
-        }
-
-        function saveConfig() {
-            const inputVal = document.getElementById('shop-url-input').value.trim();
-            if (inputVal) {
-                shopFBLink = inputVal;
-                localStorage.setItem('shop_fb_url', shopFBLink);
-                document.getElementById('fb-header-btn').href = shopFBLink;
+        // Data Store: Products Catalog
+        const products = [
+            {
+                id: 1,
+                name: "Bộ 7 Tráp Sen Đá & Rose Pastel",
+                category: "trap",
+                price: 9800000,
+                tag: "Hot Trend TikTok",
+                image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=600",
+                desc: "Kết hợp giữa Sen đá mộc mạc và hoa hồng Ecuador nhập khẩu, phong cách hiện đại nhẹ nhàng."
+            },
+            {
+                id: 2,
+                name: "Bó Hoa Cô Dâu Tulip & Linh Lan White",
+                category: "hoa",
+                price: 1850000,
+                tag: "Best Seller",
+                image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&q=80&w=600",
+                desc: "Bó hoa dáng rủ tự nhiên với 100% Tulip Hà Lan phối hoa Baby tươi thuần khiết."
+            },
+            {
+                id: 3,
+                name: "Bộ 9 Tráp Rồng Phượng LED VIP",
+                category: "trap",
+                price: 15500000,
+                tag: "Luxury Viral",
+                image: "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&q=80&w=600",
+                desc: "Rồng phượng tết thủ công từ trái cây tươi, kết hợp hệ thống đèn LED huyền ảo."
+            },
+            {
+                id: 4,
+                name: "Hoa Cầm Tay Cô Dâu Cẩm Tú Cầu Sage",
+                category: "hoa",
+                price: 1200000,
+                tag: "Tone Hàn Quốc",
+                image: "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&q=80&w=600",
+                desc: "Cẩm tú cầu nhập tone xanh pastel mát mắt nhẹ nhàng cho lễ hỏi mùa hè."
+            },
+            {
+                id: 5,
+                name: "Combo Trang Trí Gia Tiên Dusty Rose",
+                category: "combo",
+                price: 12500000,
+                tag: "Trọn Gói",
+                image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=600",
+                desc: "Bao gồm phông gia tiên hoa tươi, bàn bái gia tiên, cổng hoa tươi ngoài trời."
+            },
+            {
+                id: 6,
+                name: "Bộ 5 Tráp Dọc Acrylic Trong Suốt",
+                category: "trap",
+                price: 6800000,
+                tag: "Mới 2026",
+                image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=600",
+                desc: "Khay tráp Acrylic cao cấp tôn vinh vẻ đẹp hiện đại, tinh tế từng chi tiết."
+            },
+            {
+                id: 7,
+                name: "Hoa Xe Cưới Lan Hồ Điệp Trắng",
+                category: "hoa",
+                price: 3500000,
+                tag: "Sang Trọng",
+                image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=600",
+                desc: "Thiết kế cụm hoa xe cưới Lan Hồ Điệp trắng muốt kiêu sa cho xe mui trần/Sedan."
+            },
+            {
+                id: 8,
+                name: "Cổng Hoa Tươi Đón Khách Mùa Cưới",
+                category: "combo",
+                price: 7500000,
+                tag: "SNS Hot Choice",
+                image: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&q=80&w=600",
+                desc: "Cổng vòm hoa tươi nhập khẩu 100% đón khách chụp hình kỷ niệm."
             }
-            toggleConfigModal();
+        ];
+
+        // State Management
+        let cart = [];
+
+        // Application Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts('all');
+            setupMobileMenu();
+        });
+
+        // Mobile Navigation Toggle
+        function setupMobileMenu() {
+            const btn = document.getElementById('mobileMenuBtn');
+            const menu = document.getElementById('mobileMenu');
+            const links = document.querySelectorAll('.mobile-nav-link');
+
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                });
+            });
         }
 
-        function orderFlower(code) {
-            const message = `Chào shop, mình muốn tư vấn mẫu hoa có mã: ${code}`;
-            navigator.clipboard.writeText(message).then(() => {
-                const toast = document.getElementById('toast');
-                document.getElementById('toast-code').innerText = code;
-                
-                toast.classList.remove('translate-y-20', 'opacity-0');
-                
-                setTimeout(() => {
-                    window.open(shopFBLink, '_blank');
-                }, 1000);
+        function renderProducts(categoryFilter) {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
 
-                setTimeout(() => {
-                    toast.classList.add('translate-y-20', 'opacity-0');
-                }, 4000);
-            }).catch(() => {
-                window.open(shopFBLink, '_blank');
+            const filtered = categoryFilter === 'all' 
+                ? products 
+                : products.filter(p => p.category === categoryFilter);
+
+            filtered.forEach(p => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-3xl overflow-hidden border border-rose-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group";
+                card.innerHTML = `
+                    <div>
+                        <div class="relative overflow-hidden aspect-square bg-rose-50">
+                            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-108 transition duration-500">
+                            <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-dusty-rose font-bold text-[10px] px-3 py-1 rounded-full border border-rose-100 shadow-sm">
+                                ${p.tag}
+                            </span>
+                            <button onclick="openQuickView(${p.id})" class="absolute bottom-3 right-3 bg-white/90 hover:bg-dusty-rose hover:text-white text-gray-800 text-xs p-2.5 rounded-full shadow-md transition duration-300 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-serif-title text-lg font-bold text-gray-900 group-hover:text-dusty-rose transition line-clamp-1">${p.name}</h3>
+                            <p class="text-xs text-gray-500 mt-1 line-clamp-2">${p.desc}</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <div class="flex items-center justify-between pt-3 border-t border-rose-50">
+                            <div>
+                                <span class="text-[10px] text-gray-400 uppercase font-semibold block">Giá tham khảo</span>
+                                <span class="text-base font-bold text-dusty-rose">${formatCurrency(p.price)}</span>
+                            </div>
+                            <div class="flex gap-1.5">
+                                <button onclick="addToCart(${p.id})" title="Thêm vào giỏ hàng" class="bg-rose-50 hover:bg-dusty-rose text-dusty-rose hover:text-white px-2.5 py-2 rounded-xl text-xs font-semibold transition duration-300">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                                <button onclick="sendZaloInquiry('${p.name}')" title="Tư vấn ngay qua Zalo" class="bg-zalo-blue hover:bg-zalo-hover text-white px-3 py-2 rounded-xl text-xs font-semibold transition duration-300 flex items-center gap-1">
+                                    <i class="fa-solid fa-paper-plane text-[10px]"></i> Zalo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
             });
+        }
+
+        // Filter Catalog Tabs
+        function filterCatalog(category) {
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                if (btn.dataset.tab === category) {
+                    btn.classList.add('bg-white', 'text-dusty-rose', 'shadow-sm');
+                    btn.classList.remove('text-gray-600');
+                } else {
+                    btn.classList.remove('bg-white', 'text-dusty-rose', 'shadow-sm');
+                    btn.classList.add('text-gray-600');
+                }
+            });
+            renderProducts(category);
+        }
+
+        // Add to Cart Logic
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartUI();
+            showToast(`Đã thêm "${product.name}" vào giỏ!`);
+        }
+
+        // Update Cart Drawer & Badge
+        function updateCartUI() {
+            const badge = document.getElementById('cartBadge');
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            badge.innerText = totalCount;
+
+            const container = document.getElementById('cartItemsContainer');
+            container.innerHTML = '';
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-gray-400 space-y-3">
+                        <i class="fa-solid fa-basket-shopping text-4xl text-rose-200"></i>
+                        <p class="text-xs">Giỏ hàng của bạn đang trống</p>
+                    </div>
+                `;
+            } else {
+                cart.forEach(item => {
+                    const el = document.createElement('div');
+                    el.className = "flex items-center gap-3 p-3 bg-rose-50/50 rounded-2xl border border-rose-100";
+                    el.innerHTML = `
+                        <img src="${item.image}" class="w-16 h-16 rounded-xl object-cover shrink-0">
+                        <div class="flex-1 min-w-0">
+                            <h4 class="text-xs font-bold text-gray-900 truncate">${item.name}</h4>
+                            <p class="text-xs text-dusty-rose font-semibold mt-0.5">${formatCurrency(item.price)}</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <button onclick="changeQty(${item.id}, -1)" class="w-5 h-5 bg-white border rounded text-xs flex items-center justify-center">-</button>
+                                <span class="text-xs font-bold">${item.quantity}</span>
+                                <button onclick="changeQty(${item.id}, 1)" class="w-5 h-5 bg-white border rounded text-xs flex items-center justify-center">+</button>
+                            </div>
+                        </div>
+                        <button onclick="removeFromCart(${item.id})" class="text-gray-400 hover:text-rose-500 text-xs p-1">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    `;
+                    container.appendChild(el);
+                });
+            }
+
+            const totalSum = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('cartTotalPrice').innerText = formatCurrency(totalSum);
+        }
+
+        function changeQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.id !== id);
+                }
+                updateCartUI();
+            }
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(i => i.id !== id);
+            updateCartUI();
+        }
+
+        function toggleCart() {
+            const drawer = document.getElementById('cartDrawer');
+            drawer.classList.toggle('hidden');
+        }
+
+        document.getElementById('cartBtn').addEventListener('click', toggleCart);
+
+        function openQuickView(id) {
+            const product = products.find(p => p.id === id);
+            if (!product) return;
+
+            const modal = document.getElementById('quickViewModal');
+            const content = document.getElementById('quickViewContent');
+
+            content.innerHTML = `
+                <div class="aspect-square bg-rose-50 rounded-2xl overflow-hidden">
+                    <img src="${product.image}" class="w-full h-full object-cover">
+                </div>
+                <div class="flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] bg-rose-100 text-dusty-rose px-2.5 py-1 rounded-full font-bold uppercase">${product.tag}</span>
+                        <h3 class="font-serif-title text-2xl font-bold text-gray-900 mt-2">${product.name}</h3>
+                        <p class="text-xl font-bold text-dusty-rose mt-2">${formatCurrency(product.price)}</p>
+                        <p class="text-xs text-gray-500 mt-4 leading-relaxed">${product.desc}</p>
+                        <div class="mt-4 p-3 bg-rose-50/50 rounded-xl text-[11px] text-gray-600 space-y-1">
+                            <p>✓ Tùy chỉnh hoa tươi theo tone màu đại lễ</p>
+                            <p>✓ Khay tráp Acrylic / Sơn mài cao cấp</p>
+                            <p>✓ Giao tận nơi bằng xe chuyên dụng</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 flex gap-2">
+                        <button onclick="sendZaloInquiry('${product.name}')" class="flex-1 bg-zalo-blue text-white py-3 rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-zalo-hover transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> Tư Vấn Mẫu Qua Zalo
+                        </button>
+                        <button onclick="addToCart(${product.id}); closeQuickView();" class="px-4 py-3 bg-rose-50 text-dusty-rose rounded-xl text-xs font-bold hover:bg-dusty-rose hover:text-white transition">
+                            Thêm Giỏ
+                        </button>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function closeQuickView() {
+            document.getElementById('quickViewModal').classList.add('hidden');
+        }
+
+        function selectPackage(packageName) {
+            sendZaloInquiry(`Tư vấn đăng ký ${packageName}`);
+        }
+
+        // ZALO INTEGRATION LOGIC FUNCTIONS
+        function sendZaloInquiry(productOrPackageName) {
+            const message = `Xin chào Bloom & Grace, mình cần tư vấn thông tin chi tiết về: ${productOrPackageName}`;
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://zalo.me/${ZALO_PHONE}?text=${encodedMessage}`, '_blank');
+        }
+
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('bookName').value;
+            const phone = document.getElementById('bookPhone').value;
+            const date = document.getElementById('bookDate').value || "Chưa xác định";
+            const service = document.getElementById('bookService').value;
+            const note = document.getElementById('bookNote').value || "Không có";
+
+            const message = `YÊU CẦU ĐẶT LỊCH TƯ VẤN NGÀY CƯỚI\n- Họ tên: ${name}\n- SĐT/Zalo: ${phone}\n- Ngày ăn hỏi/cưới dự kiến: ${date}\n- Dịch vụ quan tâm: ${service}\n- Ghi chú: ${note}`;
+            
+            closeBookingModal();
+            showToast("Đang chuyển tiếp sang ứng dụng Zalo...");
+            
+            setTimeout(() => {
+                const encodedMessage = encodeURIComponent(message);
+                window.open(`https://zalo.me/${ZALO_PHONE}?text=${encodedMessage}`, '_blank');
+            }, 500);
+
+            e.target.reset();
+        }
+
+        function handleQuickZaloSubmit(e) {
+            e.preventDefault();
+            const phone = document.getElementById('quickPhone').value;
+            const message = `Xin chào Bloom & Grace, mình cần nhận báo giá và mẫu tráp mới nhất qua Zalo SĐT của mình là: ${phone}`;
+            
+            showToast("Đang kết nối Zalo...");
+            setTimeout(() => {
+                const encodedMessage = encodeURIComponent(message);
+                window.open(`https://zalo.me/${ZALO_PHONE}?text=${encodedMessage}`, '_blank');
+            }, 400);
+
+            e.target.reset();
+        }
+
+        function checkoutToZalo() {
+            if (cart.length === 0) {
+                showToast("Giỏ hàng của bạn đang trống!");
+                return;
+            }
+            let summary = "Chào Bloom & Grace, mình muốn tư vấn đặt hàng danh sách mẫu sau:\n";
+            cart.forEach((item, index) => {
+                summary += `${index + 1}. ${item.name} (x${item.quantity}) - ${formatCurrency(item.price * item.quantity)}\n`;
+            });
+            const totalSum = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            summary += `Tổng tạm tính: ${formatCurrency(totalSum)}\n\nNhờ shop tư vấn thêm giúp mình!`;
+
+            const encoded = encodeURIComponent(summary);
+            window.open(`https://zalo.me/${ZALO_PHONE}?text=${encoded}`, '_blank');
+        }
+
+        // Modals Toggle
+        function openBookingModal() {
+            document.getElementById('bookingModal').classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+
+        // Helper Utilities
+        function formatCurrency(amount) {
+            return amount.toLocaleString('vi-VN') + ' đ';
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').innerText = msg;
+            toast.classList.remove('-translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('-translate-y-20', 'opacity-0');
+            }, 3500);
         }
     </script>
 </body>
